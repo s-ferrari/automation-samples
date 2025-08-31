@@ -1,5 +1,7 @@
+//const { xit } = require("mocha");
+
 describe('Price Calculation', () => {
-  xit('Sin Tarjeta', () => {
+  it('Without card', () => {
     cy.visit('https://exercises.test-design.org/price-calculation/')
     cy.get('[data-harmony-id="Price"]').type('200');
     cy.get('[data-harmony-id="Weight"]').type('4');
@@ -7,7 +9,7 @@ describe('Price Calculation', () => {
     cy.get('[data-harmony-id="Total price"]').should('have.text', '180');
   })
 
-  xit('Con tarjeta', () => {
+  it('With card', () => {
     cy.visit('https://exercises.test-design.org/price-calculation/')
     cy.get('[data-harmony-id="Price"]').type('200');
     cy.get('[data-harmony-id="Weight"]').type('4');
@@ -21,7 +23,7 @@ describe('Price Calculation', () => {
   let cards = [true, false];
 
 
-  it('wea', () => {
+  it('All cases', () => {
     cy.visit('https://exercises.test-design.org/price-calculation/')
     for (let price of prices) {
       cy.get('[data-harmony-id="Price"]').type(price);
@@ -41,13 +43,4 @@ describe('Price Calculation', () => {
     cy.get('[data-harmony-id="Stop"]').click();
     //cy.get('[data-harmony-id="Total price"]').should('have.text','170');
   })
-
-
-
-
-
-
-
 })
-
-
