@@ -1,150 +1,129 @@
-describe('alquiler', () => {
+describe('Vehicle Rental', () => {
 
-  it('alquiler', () => {
+  it('Vehicle Rental', () => {
     cy.visit('https://exercises.test-design.org/rental/')
 
-
-    // agregar autos R1 y R2
-    picarboton("Car + button", 2)
+    // Add cars R1 and R2
+    clickButton("Car + button", 2)
     cy.get('[data-harmony-id="Car number"]').should('have.text', 2);
     cy.get('[data-harmony-id="Rental price"]').should('have.text', 600);
-    picarboton("Car - button", 2)
+    clickButton("Car - button", 2)
     cy.get('[data-harmony-id="Car number"]').should('have.text', 0);
     cy.get('[data-harmony-id="Rental price"]').should('have.text', 0);
 
     cy.get('[data-harmony-id="Next test"]').click();
-    //agregar bicis
-    picarboton("Bike + button", 2)
+    // Add bikes
+    clickButton("Bike + button", 2)
     cy.get('[data-harmony-id="Bike number"]').should('have.text', 2);
     cy.get('[data-harmony-id="Rental price"]').should('have.text', 200);
-    picarboton("Bike - button", 2)
+    clickButton("Bike - button", 2)
     cy.get('[data-harmony-id="Bike number"]').should('have.text', 0);
     cy.get('[data-harmony-id="Rental price"]').should('have.text', 0);
 
     cy.get('[data-harmony-id="Next test"]').click();
 
-    //R3 y R3b
-    picarboton("Car + button", 3)
+    // Test discount when car rental exceeds 600 EUR - requirements R3 and R3b
+    clickButton("Car + button", 3)
     cy.get('[data-harmony-id="Car number"]').should('have.text', 3);
     cy.get('[data-harmony-id="Rental price"]').should('have.text', 900);
     cy.get('[data-harmony-id="Bike number"]').should('have.text', 1);
 
     cy.get('[data-harmony-id="Next test"]').click();
 
-    //R3a
-    picarboton("Bike + button", 2)
+    // Test discount when bikes already selected - requirement R3a
+    clickButton("Bike + button", 2)
     cy.get('[data-harmony-id="Bike number"]').should('have.text', 2);
-    picarboton("Car + button", 3)
+    clickButton("Car + button", 3)
     cy.get('[data-harmony-id="Car number"]').should('have.text', 3);
     cy.get('[data-harmony-id="Rental price"]').should('have.text', 1000);
 
     cy.get('[data-harmony-id="Next test"]').click();
 
-    //R4
-    picarboton("Car + button", 3)
+    // Remove vehicles and check discount withdrawal - requirement R4
+    clickButton("Car + button", 3)
     cy.get('[data-harmony-id="Car number"]').should('have.text', 3);
     cy.get('[data-harmony-id="Rental price"]').should('have.text', 900);
     cy.get('[data-harmony-id="Bike number"]').should('have.text', 1);
 
-    picarboton("Car - button", 1)
+    clickButton("Car - button", 1)
     cy.get('[data-harmony-id="Car number"]').should('have.text', 2);
     cy.get('[data-harmony-id="Bike number"]').should('have.text', 0);
     cy.get('[data-harmony-id="Rental price"]').should('have.text', 600);
 
     cy.get('[data-harmony-id="Next test"]').click();
 
-    //R4a
-    picarboton("Car + button", 3)
+    // Discount is withdrawn and re-applied when no bike is added - requirement R4a
+    clickButton("Car + button", 3)
     cy.get('[data-harmony-id="Car number"]').should('have.text', 3);
     cy.get('[data-harmony-id="Rental price"]').should('have.text', 900);
     cy.get('[data-harmony-id="Bike number"]').should('have.text', 1);
 
-    picarboton("Car - button", 1)
+    clickButton("Car - button", 1)
     cy.get('[data-harmony-id="Car number"]').should('have.text', 2);
     cy.get('[data-harmony-id="Bike number"]').should('have.text', 0);
     cy.get('[data-harmony-id="Rental price"]').should('have.text', 600);
 
-    picarboton("Car + button", 1)
+    clickButton("Car + button", 1)
     cy.get('[data-harmony-id="Car number"]').should('have.text', 3);
     cy.get('[data-harmony-id="Rental price"]').should('have.text', 900);
     cy.get('[data-harmony-id="Bike number"]').should('have.text', 1);
 
     cy.get('[data-harmony-id="Next test"]').click();
 
-    //R4b
-    picarboton("Car + button", 3)
+    // Discount is withdrawn and re-applied when bikes are added - requirement R4b
+    clickButton("Car + button", 3)
     cy.get('[data-harmony-id="Car number"]').should('have.text', 3);
     cy.get('[data-harmony-id="Rental price"]').should('have.text', 900);
-    cy.get('[data-harmony-id="Bike number"]').should('have.text', 1); //bici gratis
+    cy.get('[data-harmony-id="Bike number"]').should('have.text', 1); // Free bike
 
-    picarboton("Car - button", 1)
+    clickButton("Car - button", 1)
     cy.get('[data-harmony-id="Car number"]').should('have.text', 2);
     cy.get('[data-harmony-id="Bike number"]').should('have.text', 0);
     cy.get('[data-harmony-id="Rental price"]').should('have.text', 600);
 
-    picarboton("Car + button", 1)
+    clickButton("Car + button", 1)
     cy.get('[data-harmony-id="Car number"]').should('have.text', 3);
     cy.get('[data-harmony-id="Rental price"]').should('have.text', 900);
-    cy.get('[data-harmony-id="Bike number"]').should('have.text', 1); //bici gratis de nuevo
+    cy.get('[data-harmony-id="Bike number"]').should('have.text', 1); // Free bike again
 
-    picarboton("Bike + button", 2)
-    cy.get('[data-harmony-id="Bike number"]').should('have.text', 3); // hay 3 porque 1 esta gratis
+    clickButton("Bike + button", 2)
+    cy.get('[data-harmony-id="Bike number"]').should('have.text', 3); // 3 bikes because 1 is free
     cy.get('[data-harmony-id="Rental price"]').should('have.text', 1100);
 
     cy.get('[data-harmony-id="Next test"]').click();
 
-    //R5
-    picarboton("Car + button", 3)
+    // Remove free bike and check no discount - requirement R5
+    clickButton("Car + button", 3)
     cy.get('[data-harmony-id="Car number"]').should('have.text', 3);
     cy.get('[data-harmony-id="Rental price"]').should('have.text', 900);
-    cy.get('[data-harmony-id="Bike number"]').should('have.text', 1); //bici gratis
+    cy.get('[data-harmony-id="Bike number"]').should('have.text', 1); // Free bike
 
-    picarboton("Bike - button", 1)
+    clickButton("Bike - button", 1)
     cy.get('[data-harmony-id="Car number"]').should('have.text', 3);
     cy.get('[data-harmony-id="Bike number"]').should('have.text', 0);
-    cy.get('[data-harmony-id="Rental price"]').should('have.text', 900); //saco la bici gratis pero no se hace otro descuento
+    cy.get('[data-harmony-id="Rental price"]').should('have.text', 900); // removed free bike, no additional discount
 
-    //weas de la pagina
-
-    picarboton("Car - button", 1)
+    clickButton("Car - button", 1)
     cy.get('[data-harmony-id="Car number"]').should('have.text', 2);
-    cy.get('[data-harmony-id="Rental price"]').should('have.text', 600); // +3 autos, -1 bici, -1 auto
+    cy.get('[data-harmony-id="Rental price"]').should('have.text', 600); // +3 cars, -1 bike, -1 car
 
-    picarboton("Car + button", 1)
+    clickButton("Car + button", 1)
     cy.get('[data-harmony-id="Car number"]').should('have.text', 3);
-    picarboton("Bike + button", 1)
+    clickButton("Bike + button", 1)
     cy.get('[data-harmony-id="Bike number"]').should('have.text', 2);
     cy.get('[data-harmony-id="Rental price"]').should('have.text', 1000);
-     picarboton("Bike - button", 1)
+    clickButton("Bike - button", 1)
     cy.get('[data-harmony-id="Bike number"]').should('have.text', 1);
-    cy.get('[data-harmony-id="Rental price"]').should('have.text', 900); //+1 auto, + 1 bici, -1 bici
-    
+    cy.get('[data-harmony-id="Rental price"]').should('have.text', 900); // +1 car, +1 bike, -1 bike
 
-    
     cy.get('[data-harmony-id="Stop"]').click();
-
-
   })
 })
 
-function picarboton(id, cantidad) {
+function clickButton(id, amount) {
   let i = 0;
-  while (i < cantidad) {
+  while (i < amount) {
     cy.get('[data-harmony-id="' + id + '"]').click();
     i++;
   }
 }
-
-// function picarboton(id) {
-//   for (let i = 0; i < 3; i++) {
-//     cy.get('[data-harmony-id="' + id + '"]').click();
-//   }
-// }
-
-// function picarboton(id) {
-//   let i = 0;
-//   while ( i < 3) {
-//     cy.get('[data-harmony-id="' + id + '"]').click();
-//     i++;
-//   }
-// }
