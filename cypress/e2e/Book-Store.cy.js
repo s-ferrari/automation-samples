@@ -19,7 +19,6 @@ describe('Book Store', () => {
           } else {
             cy.get('[data-harmony-id="Card"]').uncheck();
           }
-
           cy.get('[data-harmony-id="Add test"]').click();
         }
       }
