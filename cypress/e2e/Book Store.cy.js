@@ -3,7 +3,6 @@ describe('Book Store', () => {
   it('Book Store', () => {
     cy.visit('https://exercises.test-design.org/online-book-store/')
 
-
     let newPrices = [40, 49.99, 50, 29, 30, 30.01, 60];
     let oldPrices = [59, 60.01, 61, 60, 0];
     let vipCustomers = [true, false];
