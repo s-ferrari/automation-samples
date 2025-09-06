@@ -1,5 +1,4 @@
 describe('Vacations', () => {
-
   it('Vacations', () => {
     cy.visit('https://exercises.test-design.org/paid-vacation-days/')
 
