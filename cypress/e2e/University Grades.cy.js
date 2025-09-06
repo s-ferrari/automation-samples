@@ -1,5 +1,4 @@
 describe('University Grades', () => {
-
   it('University Grades', () => {
     cy.visit('https://exercises.test-design.org/university-grade/')
 
