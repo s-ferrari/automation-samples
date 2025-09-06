@@ -1,5 +1,4 @@
-describe('Vehicle Rental', () => {
-
+describe('Rental', () => {
   it('Vehicle Rental', () => {
     cy.visit('https://exercises.test-design.org/rental/')
 
