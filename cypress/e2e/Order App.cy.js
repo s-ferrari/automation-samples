@@ -1,5 +1,4 @@
-describe('Online Order App', () => {
-
+describe('Order App', () => {
   it('Online Order App', () => {
     cy.visit('https://exercises.test-design.org/pizza/')
 
