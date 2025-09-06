@@ -1,5 +1,4 @@
 describe('Book Store', () => {
-
   it('Book Store', () => {
     cy.visit('https://exercises.test-design.org/online-book-store/')
 
