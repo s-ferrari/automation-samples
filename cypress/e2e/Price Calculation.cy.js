@@ -5,7 +5,6 @@ This test generates all combinations of:
  - credit card usage*/
 
 describe('Price Calculation', () => {
-
   it('Price Calculation', () => {
     cy.visit('https://exercises.test-design.org/price-calculation/')
 
