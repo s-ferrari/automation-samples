@@ -1,5 +1,5 @@
 describe('Rental', () => {
-  it('Vehicle Rental', () => {
+  it('Rental', () => {
     cy.visit('https://exercises.test-design.org/rental/')
 
     // Add cars R1 and R2
