@@ -1,5 +1,5 @@
 describe('Order App', () => {
-  it('Online Order App', () => {
+  it('Order App', () => {
     cy.visit('https://exercises.test-design.org/pizza/')
 
     // R1 - Before any user action, all item quantities should be 0
