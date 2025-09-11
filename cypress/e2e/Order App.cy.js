@@ -40,8 +40,8 @@ describe('Order App', () => {
 
     clickButton("Next test", 1)
 
-    // R4 & R5 - When non-beverage total reaches €45, free drinks options appear.
-    // User can select either free beer or free coke, but cannot switch once selected.
+    /*R4 & R5 - When non-beverage total reaches €45, free drinks options appear.
+    User can select either free beer or free coke, but cannot switch once selected.*/
 
     cy.get('[data-harmony-id="free beer"]').should('not.exist');
     cy.get('[data-harmony-id="free coke"]').should('not.exist');
