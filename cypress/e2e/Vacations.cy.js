@@ -17,7 +17,7 @@ describe('Vacations', () => {
     }
     cy.get('[data-harmony-id="Stop"]').click();
   })
-  
+
   function calculateVacationDays(age, serviceYear) {
     let vacationDays = 22;
     if (age < 18 || age >= 60 || serviceYear >= 30) {
