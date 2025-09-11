@@ -5,7 +5,7 @@ describe('Book Store', () => {
     let newPrices = [40, 49.99, 50, 29, 30, 30.01, 60];
     let oldPrices = [59, 60.01, 61, 60, 0];
     let vipCustomers = [true, false];
-  
+
     for (let newPrice of newPrices) {
       cy.get('[data-harmony-id="New price"]').clear().type(newPrice);
 
